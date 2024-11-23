@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://6lnifglnjt1a"]
+[gd_scene load_steps=7 format=3 uid="uid://6lnifglnjt1a"]
 
 [ext_resource type="Texture2D" uid="uid://c7fqibvqojifx" path="res://Textures/dirt_full_new.png" id="1_fqam0"]
 [ext_resource type="Script" path="res://World/world.gd" id="1_yd3fu"]
 [ext_resource type="PackedScene" uid="uid://ljbib72e2ejb" path="res://Player/player.tscn" id="2_mnb3d"]
 [ext_resource type="PackedScene" uid="uid://bf2gws1lk85i8" path="res://Enemy/enemy.tscn" id="4_wfqvn"]
+[ext_resource type="Script" path="res://World/enemy_spawner.gd" id="5_unf2x"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u84bo"]
+radius = 3.0
+height = 16.0
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_yd3fu")
@@ -18,5 +23,26 @@ region_rect = Rect2(0, 0, 4000, 4000)
 
 [node name="Player" parent="." instance=ExtResource("2_mnb3d")]
 
+[node name="CollisionShape2D" parent="Player" index="1"]
+visible = true
+
+[node name="CollisionShape2D" parent="Player/Hurtbox" index="0"]
+position = Vector2(1, 1)
+shape = SubResource("CapsuleShape2D_u84bo")
+
 [node name="Enemy" parent="." instance=ExtResource("4_wfqvn")]
 position = Vector2(156, -73)
+
+[node name="EnemySpawner" type="Node" parent="."]
+script = ExtResource("5_unf2x")
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(-128, -70)
+points = PackedVector2Array(0, 0, 60, -81)
+width = 2.0
+
+[editable path="Player"]
+[editable path="Player/Hurtbox"]
+[editable path="Enemy"]
+[editable path="Enemy/Hurtbox"]
+[editable path="Enemy/Hitbox"]
