@@ -5,7 +5,6 @@ extends CharacterBody2D
 
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var animation : AnimationPlayer = $AnimationPlayer
-@onready var linefromplayer = $LineFromPlayer
 
 
 
@@ -29,7 +28,6 @@ func movement():
 		animation.play("walk")
 	else:
 		animation.pause()
-	print(position)
 
 
 func _on_hurtbox_hurt(damage: Variant) -> void:
