@@ -64,7 +64,6 @@ hframes = 2
 frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(1, 2)
 shape = SubResource("CapsuleShape2D_d540m")
 
@@ -74,7 +73,6 @@ libraries = {
 }
 
 [node name="Hurtbox" parent="." instance=ExtResource("3_uvpg2")]
-visible = false
 collision_mask = 4
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]

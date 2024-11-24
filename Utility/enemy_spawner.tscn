@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Utility/spawn_info.gd" id="2_bgr6w"]
 [ext_resource type="PackedScene" uid="uid://bf2gws1lk85i8" path="res://Enemy/enemy.tscn" id="3_681n0"]
 
-[sub_resource type="Resource" id="Resource_cuyq5"]
+[sub_resource type="Resource" id="Resource_usr18"]
 script = ExtResource("2_bgr6w")
 time_start = 0
 time_end = 60
@@ -14,6 +14,9 @@ enemy_spawn_delay = 1
 
 [node name="EnemySpawner" type="Node2D"]
 script = ExtResource("1_ouicf")
-spawns = Array[ExtResource("2_bgr6w")]([SubResource("Resource_cuyq5")])
+spawns = Array[ExtResource("2_bgr6w")]([SubResource("Resource_usr18")])
 
 [node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
